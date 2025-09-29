@@ -148,7 +148,9 @@ export default function Sidebar() {
     <>
       {/* زرار الهامبورجر يظهر بس في الموبايل */}
       <button
-        className="md:hidden fixed top-4 right-4 z-50 bg-[#202124] p-2 rounded-md text-white"
+        className={`md:hidden fixed top-20  right-4 z-50 bg-[#202124] p-2 rounded-md text-white ${
+          isOpen ? "hidden" : ""
+        }`}
         onClick={() => setIsOpen(!isOpen)}
       >
         <MenuToggleIcon />

@@ -42,7 +42,7 @@ export default function Layout() {
         </div>
       </div>
       <Sidebar />
-      <main className="flex-1 pt-12 lg:mr-64 bg-gray-100 min-h-screen">
+      <main className="flex-1 pt-24 lg:pt-12 lg:mr-64 bg-gray-100 min-h-screen">
         <div className="p-8">
           <Outlet />
         </div>
