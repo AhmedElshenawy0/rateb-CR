@@ -160,4 +160,4 @@ export const ordersData = {
   ],
 };
 
-export const branches = ["فرع المعادي", "فرع التجمع الخامس", "فرع 6 أكتوبر"];
+export const branches = ["المنصورة", "بورسعيد"];

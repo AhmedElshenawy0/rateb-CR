@@ -98,6 +98,22 @@ export default function ReportsPage() {
               ))}
             </select>
           </div>
+          <div>
+            <label
+              htmlFor="reportType"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              نوع التقرير
+            </label>
+            <select
+              id="reportType"
+              className="w-full p-2 border border-gray-300 rounded-md"
+            >
+              <option>ملخص المبيعات</option>
+              <option>نشاط العملاء</option>
+              <option>أداء المنتجات</option>
+            </select>
+          </div>
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

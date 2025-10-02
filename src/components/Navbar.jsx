@@ -87,17 +87,19 @@ const ReportsIcon = () => (
   </svg>
 );
 
-// === NavLink ===
 const NavLink = ({ to, icon, children }) => {
   const location = useLocation();
   const isActive =
     location.pathname === to || (to === "/" && location.pathname === "/");
+
   const activeClass = "bg-[#FF6B00] text-white";
-  const inactiveClass = "text-gray-300 hover:bg-gray-700 hover:text-white";
+  const inactiveClass =
+    "text-gray-300 hover:bg-gray-700 hover:text-white transition";
+
   return (
     <Link
       to={to}
-      className={`flex items-center space-x-4 px-4 py-3 rounded-md transition-colors ${
+      className={`flex items-center space-x-4 px-4 py-3 rounded-md ${
         isActive ? activeClass : inactiveClass
       }`}
     >
@@ -106,6 +108,8 @@ const NavLink = ({ to, icon, children }) => {
     </Link>
   );
 };
+
+// === Hamburger Icon ===
 const MenuToggleIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -122,38 +126,63 @@ const MenuToggleIcon = () => (
     />
   </svg>
 );
+
 // === Sidebar ===
-export default function Sidebar() {
+export default function Sidebar({ isOpen, onClose }) {
   return (
-    <aside className="w-64 h-screen bg-[#202124] text-white flex flex-col fixed right-0">
-      <div className="px-6 py-8">
-        <h2 className="text-2xl font-bold">الراتب</h2>
-      </div>
-      <nav className="flex-1 px-4 space-y-2">
-        <NavLink to="/" icon={<DashboardIcon />}>
-          لوحة التحكم
-        </NavLink>
-        <NavLink to="/orders" icon={<OrdersIcon />}>
-          الطلبات
-        </NavLink>
-        <NavLink to="/customers" icon={<CustomersIcon />}>
-          العملاء
-        </NavLink>
-        <NavLink to="/menu" icon={<MenuIcon />}>
-          المنيو
-        </NavLink>
-        <NavLink to="/reports" icon={<ReportsIcon />}>
-          التقارير
-        </NavLink>
-      </nav>
-    </aside>
+    <>
+      {/* Overlay for mobile */}
+      {isOpen && (
+        <div
+          onClick={onClose}
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+        ></div>
+      )}
+
+      <aside
+        className={`fixed top-0 right-0 h-screen w-64 bg-[#202124] text-white flex flex-col transform transition-transform z-50
+        ${isOpen ? "translate-x-0" : "translate-x-full"} 
+        md:translate-x-0 md:static`}
+      >
+        <div className="px-6 py-8 flex justify-between items-center">
+          <h2 className="text-2xl font-bold">الراتب</h2>
+          <button onClick={onClose} className="md:hidden text-white">
+            ✕
+          </button>
+        </div>
+        <nav className="flex-1 px-4 space-y-2">
+          <NavLink to="/" icon={<DashboardIcon />}>
+            لوحة التحكم
+          </NavLink>
+          <NavLink to="/orders" icon={<OrdersIcon />}>
+            الطلبات
+          </NavLink>
+          <NavLink to="/customers" icon={<CustomersIcon />}>
+            العملاء
+          </NavLink>
+          <NavLink to="/menu" icon={<MenuIcon />}>
+            المنيو
+          </NavLink>
+          <NavLink to="/reports" icon={<ReportsIcon />}>
+            التقارير
+          </NavLink>
+        </nav>
+      </aside>
+    </>
   );
 }
 
-export const Header = () => {
+// === Header ===
+export const Header = ({ onMenuToggle }) => {
   const [isOnline, setIsOnline] = useState(true);
+
   return (
-    <header className="bg-white shadow-md p-4 flex justify-end items-center">
+    <header className="bg-white shadow-md p-4 flex justify-between items-center md:justify-end">
+      {/* Hamburger button (mobile only) */}
+      <button className="md:hidden text-gray-700" onClick={onMenuToggle}>
+        <MenuToggleIcon />
+      </button>
+
       <div className="flex items-center space-x-2">
         <span
           className={`text-sm font-medium ${
@@ -176,5 +205,20 @@ export const Header = () => {
         </div>
       </div>
     </header>
+  );
+};
+
+// === Example Layout usage ===
+export const Layout = () => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  return (
+    <div className="flex">
+      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+      <div className="flex-1 flex flex-col">
+        <Header onMenuToggle={() => setSidebarOpen(true)} />
+        <main className="p-6">محتوى الصفحة هنا</main>
+      </div>
+    </div>
   );
 };
