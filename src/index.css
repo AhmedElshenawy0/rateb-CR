@@ -1,9 +1,9 @@
 @import "tailwindcss";
-@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Noto+Sans+Arabic:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
-:root {
+/* @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Noto+Sans+Arabic:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"); */
+/* :root {
   --brand-orange: #ff6b00;
   --brand-charcoal: #202124;
-}
+} */
 
 body {
   /* font-family: "Noto Sans Arabic", "Cairo", sans-serif; */

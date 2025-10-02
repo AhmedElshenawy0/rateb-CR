@@ -1,25 +1,10 @@
+// --- بيانات وهمية ---
 export const kpiData = [
   { title: "مبيعات اليوم", value: "٥,٤٥٠ ج.م", icon: "sales" },
   { title: "طلبات جديدة", value: "١٢٥", icon: "orders" },
   { title: "عملاء جدد", value: "٣٢", icon: "customers" },
   { title: "إجمالي الدخل", value: "٢٥٠,٦٠٠ ج.م", icon: "revenue" },
 ];
-
-export const ordersData = {
-  new: [
-    { id: "#٨٠٢٤", customer: "أحمد علي", price: "٤٥.٥٠ ج.م" },
-    { id: "#٨٠٢٥", customer: "منى السيد", price: "٨٢.٠٠ ج.م" },
-  ],
-  preparation: [
-    { id: "#٨٠٢٢", customer: "خالد محمود", price: "٢٢.٣٠ ج.م" },
-    { id: "#٨٠٢٣", customer: "فاطمة محمد", price: "١٠٥.١٠ ج.م" },
-  ],
-  delivery: [{ id: "#٨٠٢٠", customer: "يوسف إبراهيم", price: "١٢.٠٠ ج.م" }],
-  completed: [
-    { id: "#٨٠١٨", customer: "سارة عبد الله", price: "٦٥.٢٠ ج.م" },
-    { id: "#٨٠١٩", customer: "كريم حسن", price: "١٥٠.٠٠ ج.م" },
-  ],
-};
 
 export const customersData = [
   {
@@ -33,18 +18,6 @@ export const customersData = [
     phone: "٠١٢٢٣٤٥٦٧٨٩",
     totalOrders: 8,
     lastOrder: "٢٥-١٠-٢٠٢٣",
-  },
-  {
-    name: "خالد محمود",
-    phone: "٠١١٣٤٥٦٧٨٩٠",
-    totalOrders: 25,
-    lastOrder: "٢٦-١٠-٢٠٢٣",
-  },
-  {
-    name: "فاطمة محمد",
-    phone: "٠١٥٤٥٦٧٨٩٠١",
-    totalOrders: 5,
-    lastOrder: "٢٤-١٠-٢٠٢٣",
   },
 ];
 
@@ -62,7 +35,7 @@ export const menuData = {
       id: 2,
       name: "فراخ مشوية",
       price: "١٤٠.٠٠ ج.م",
-      description: "صدور دجاج متبلة بالليمون والأعشاب.",
+      description: "صدور دجاج متبلة.",
       imageUrl: "https://placehold.co/300x200/FF6B00/FFFFFF?text=Chicken",
       available: false,
     },
@@ -76,40 +49,115 @@ export const menuData = {
       imageUrl: "https://placehold.co/300x200/FF6B00/FFFFFF?text=Hummus",
       available: true,
     },
+  ],
+};
+
+export const performanceKpiData = [
+  {
+    title: "متوسط وقت استجابة الكاشير",
+    value: "1د 45ث",
+    trend: "+5%",
+    trendDirection: "up",
+  },
+  {
+    title: "متوسط وقت تحضير المطبخ",
+    value: "12د 30ث",
+    trend: "-2%",
+    trendDirection: "down",
+  },
+  {
+    title: "متوسط وقت التوصيل",
+    value: "25د 10ث",
+    trend: "-8%",
+    trendDirection: "down",
+  },
+  {
+    title: "متوسط إجمالي وقت الطلب",
+    value: "40د 05ث",
+    trend: "+3%",
+    trendDirection: "up",
+  },
+];
+
+export const ordersData = {
+  new: [
     {
-      id: 4,
-      name: "فلافل",
-      price: "٧٥.٠٠ ج.م",
-      description: "كرات فلافل مقلية مقرمشة.",
-      imageUrl: "https://placehold.co/300x200/FF6B00/FFFFFF?text=Falafel",
-      available: true,
+      id: "#8024",
+      customer: "أحمد علي",
+      items: 3,
+      details: {
+        items: ["وجبة كباب", "حمص", "بيبسي"],
+        timeline: {
+          placed: "11:15 ص",
+          accepted: "11:17 ص",
+          ready: "11:32 ص",
+          delivered: "11:55 ص",
+        },
+      },
+    },
+    {
+      id: "#8025",
+      customer: "منى السيد",
+      items: 2,
+      details: {
+        items: ["فراخ مشوية", "سلطة"],
+        timeline: {
+          placed: "11:20 ص",
+          accepted: null,
+          ready: null,
+          delivered: null,
+        },
+      },
     },
   ],
-  حلويات: [
+  preparation: [
     {
-      id: 5,
-      name: "بقلاوة",
-      price: "٥٠.٠٠ ج.م",
-      description: "معجنات حلوة بالمكسرات والعسل.",
-      imageUrl: "https://placehold.co/300x200/FF6B00/FFFFFF?text=Baklava",
-      available: true,
+      id: "#8022",
+      customer: "خالد محمود",
+      items: 1,
+      details: {
+        items: ["طبق بقلاوة"],
+        timeline: {
+          placed: "11:10 ص",
+          accepted: "11:11 ص",
+          ready: null,
+          delivered: null,
+        },
+      },
+    },
+  ],
+  delivery: [
+    {
+      id: "#8020",
+      customer: "يوسف إبراهيم",
+      items: 4,
+      details: {
+        items: ["فلافل", "حمص", "سلطة", "ماء"],
+        timeline: {
+          placed: "11:00 ص",
+          accepted: "11:02 ص",
+          ready: "11:15 ص",
+          delivered: null,
+        },
+      },
+    },
+  ],
+  completed: [
+    {
+      id: "#8018",
+      customer: "سارة عبد الله",
+      items: 2,
+      details: {
+        items: ["وجبة كباب", "بيبسي"],
+        timeline: {
+          placed: "10:45 ص",
+          accepted: "10:46 ص",
+          ready: "11:05 ص",
+          delivered: "11:30 ص",
+        },
+      },
     },
   ],
 };
 
-export const shiftHistoryData = [
-  {
-    id: "S001",
-    cashier: "المدير",
-    startTime: "٢٦-١٠-٢٠٢٣ ٠٩:٠٠ ص",
-    endTime: "٢٦-١٠-٢٠٢٣ ٠٥:٠٠ م",
-    variance: "+٢.٥٠ ج.م",
-  },
-  {
-    id: "S002",
-    cashier: "چين دو",
-    startTime: "٢٥-١٠-٢٠٢٣ ٠٩:٠٠ ص",
-    endTime: "٢٥-١٠-٢٠٢٣ ٠٥:٠٠ م",
-    variance: "-١.١٠ ج.م",
-  },
-];
+export const branches = ["فرع المعادي", "فرع التجمع الخامس", "فرع 6 أكتوبر"];

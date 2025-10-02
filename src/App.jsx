@@ -1,26 +1,46 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Layout from "./Layout";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 
-import OrdersPage from "./pages/OrderPage";
+import Layout from "./Layout";
 import CustomersPage from "./pages/CustomersPage";
-import ReportsPage from "./pages/ReportsPage";
-import MenuManagementPage from "./pages/MenuManegementPage";
-import FinancialsPage from "./pages/FinancialsPage";
 import DashboardPage from "./pages/DashboardPage";
-const router = createBrowserRouter([
-  // {
-  //   path: "/login",
-  //   element: <LoginPage />,
-  // },
+import DriverConfirmationPage from "./pages/DriverConfirmationPage";
+import LoginPage from "./pages/LoginPage";
+import MenuManagementPage from "./pages/MenuManegementPage";
+import OrdersPage from "./pages/OrderPage";
+import ReportsPage from "./pages/ReportsPage";
+
+const router = createHashRouter([
+  {
+    path: "/login",
+    element: <LoginPage />,
+  },
+  {
+    path: "/complete/:orderId",
+    element: <DriverConfirmationPage />,
+  },
   {
     element: <Layout />,
     children: [
-      { path: "/", element: <DashboardPage /> },
-      { path: "/orders", element: <OrdersPage /> },
-      { path: "/customers", element: <CustomersPage /> },
-      { path: "/reports", element: <ReportsPage /> },
-      { path: "/menu", element: <MenuManagementPage /> },
-      { path: "/financials", element: <FinancialsPage /> },
+      {
+        path: "/",
+        element: <DashboardPage />,
+      },
+      {
+        path: "/orders",
+        element: <OrdersPage />,
+      },
+      {
+        path: "/customers",
+        element: <CustomersPage />,
+      },
+      {
+        path: "/menu",
+        element: <MenuManagementPage />,
+      },
+      {
+        path: "/reports",
+        element: <ReportsPage />,
+      },
     ],
   },
 ]);

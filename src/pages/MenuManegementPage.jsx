@@ -3,7 +3,6 @@ import { menuData } from "../dummyData";
 
 const ProductCard = ({ product }) => {
   const [isAvailable, setIsAvailable] = useState(product.available);
-
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
       <img
@@ -49,12 +48,10 @@ const ProductCard = ({ product }) => {
 export default function MenuManagementPage() {
   const [selectedCategory, setSelectedCategory] = useState("مشويات");
   const categories = Object.keys(menuData);
-
   return (
     <div>
       <h1 className="text-3xl font-bold text-[#202124] mb-8">إدارة المنيو</h1>
       <div className="flex flex-col md:flex-row gap-8">
-        {/* العمود الأيمن - الأقسام */}
         <div className="w-full md:w-1/4">
           <button className="w-full bg-gray-200 text-gray-800 py-2 px-4 rounded-md mb-4 hover:bg-gray-300">
             إضافة قسم جديد
@@ -75,7 +72,6 @@ export default function MenuManagementPage() {
             ))}
           </ul>
         </div>
-        {/* العمود الأيسر - المنتجات */}
         <div className="flex-1">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-2xl font-semibold text-[#202124]">

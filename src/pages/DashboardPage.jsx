@@ -1,4 +1,4 @@
-import { kpiData } from "../dummyData";
+import { branches, kpiData } from "../dummyData";
 
 const KpiIcon = ({ icon }) => {
   const icons = {
@@ -83,15 +83,57 @@ const KpiCard = ({ title, value, icon }) => (
 export default function DashboardPage() {
   return (
     <div>
-      <h1 className="text-3xl font-bold text-[#202124] mb-8">نظرة عامة</h1>
+      <div className="flex justify-between items-start mb-4">
+        <h1 className="text-3xl font-bold text-[#202124] mb-8">نظرة عامة</h1>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <label
+              htmlFor="startDate"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              تاريخ البدء
+            </label>
+            <input
+              type="date"
+              id="startDate"
+              className="w-full p-2 border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="endDate"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              تاريخ الانتهاء
+            </label>
+            <input
+              type="date"
+              id="endDate"
+              className="w-full p-2 border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="branchFilter"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              الفرع
+            </label>
+            <select
+              id="branchFilter"
+              className="w-full p-2 border border-gray-300 rounded-md"
+            >
+              <option>كل الفروع</option>
+              {branches.map((b) => (
+                <option key={b}>{b}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {kpiData.map((kpi, index) => (
-          <KpiCard
-            key={index}
-            title={kpi.title}
-            value={kpi.value}
-            icon={kpi.icon}
-          />
+          <KpiCard key={index} {...kpi} />
         ))}
       </div>
     </div>

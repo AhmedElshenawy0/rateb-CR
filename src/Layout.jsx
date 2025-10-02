@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import Sidebar from "./components/Navbar";
+import Sidebar, { Header } from "./components/Navbar";
 import { useEffect, useState } from "react";
 
 export default function Layout() {
@@ -42,11 +42,14 @@ export default function Layout() {
         </div>
       </div>
       <Sidebar />
-      <main className="flex-1 pt-24 lg:pt-12 lg:mr-64 bg-gray-100 min-h-screen">
-        <div className="p-8">
-          <Outlet />
-        </div>
-      </main>
+      <div className="flex-1 mr-64 flex flex-col">
+        <Header />
+        <main className="flex-1 bg-gray-100 min-h-screen">
+          <div className="p-8">
+            <Outlet />
+          </div>
+        </main>
+      </div>
     </div>
   );
 }
