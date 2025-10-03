@@ -44,7 +44,7 @@ export default function Layout() {
       <Sidebar />
       <div className="flex-1 flex flex-col">
         <Header />
-        <main className="flex-1 bg-gray-100 min-h-screen">
+        <main className="flex-1 lg:mr-64 bg-gray-100 min-h-screen">
           <div className="p-8">
             <Outlet />
           </div>

@@ -135,14 +135,14 @@ export default function Sidebar({ isOpen, onClose }) {
       {isOpen && (
         <div
           onClick={onClose}
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+          className="fixed inset-0 bg-black bg-opacity-50 z-10 md:hidden"
         ></div>
       )}
 
       <aside
-        className={`fixed top-0 right-0 h-screen w-64 bg-[#202124] text-white flex flex-col transform transition-transform z-50
+        className={`fixed top-16 right-0 h-screen w-64 bg-[#202124] text-white flex flex-col transform transition-transform z-40
         ${isOpen ? "translate-x-0" : "translate-x-full"} 
-        md:translate-x-0 md:static`}
+        md:translate-x-0`}
       >
         <div className="px-6 py-8 flex justify-between items-center">
           <h2 className="text-2xl font-bold">الراتب</h2>
@@ -177,7 +177,7 @@ export const Header = ({ onMenuToggle }) => {
   const [isOnline, setIsOnline] = useState(true);
 
   return (
-    <header className="bg-white shadow-md p-4 flex justify-between items-center md:justify-end">
+    <header className="bg-gray-100 shadow-md p-4 flex justify-between items-center md:justify-end mt-16">
       {/* Hamburger button (mobile only) */}
       <button className="md:hidden text-gray-700" onClick={onMenuToggle}>
         <MenuToggleIcon />
